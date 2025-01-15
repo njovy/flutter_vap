@@ -44,7 +44,9 @@ internal class NativeVapView(binaryMessenger: BinaryMessenger, context: Context?
             }
 
             override fun onVideoComplete() {
+
                 GlobalScope.launch(Dispatchers.Main) {
+                    Log.d("VAP", "onVideoComplete: ")
                     methodResult?.success(HashMap<String, String>().apply {
                         put("status", "complete")
                     })
@@ -52,7 +54,7 @@ internal class NativeVapView(binaryMessenger: BinaryMessenger, context: Context?
             }
 
             override fun onVideoDestroy() {
-             
+
             }
 
             override fun onVideoRender(frameIndex: Int, config: AnimConfig?) {
@@ -83,9 +85,15 @@ internal class NativeVapView(binaryMessenger: BinaryMessenger, context: Context?
                     vapView.startPlay(File(it))
                 }
             }
+            "setLoop" -> {
+                call.argument<Int>("loop")?.let {
+                    vapView.setLoop(it)
+                }
+            }
             "playAsset" -> {
                 call.argument<String>("asset")?.let {
                     vapView.startPlay(mContext.assets, "flutter_assets/$it")
+                    vapView.setLoop(9999)
                 }
             }
             "stop" -> {

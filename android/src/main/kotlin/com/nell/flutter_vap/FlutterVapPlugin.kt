@@ -6,6 +6,7 @@ import io.flutter.embedding.engine.plugins.FlutterPlugin
 
 class FlutterVapPlugin : FlutterPlugin {
 
+
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         flutterPluginBinding.platformViewRegistry.registerViewFactory("flutter_vap", NativeVapViewFactory(flutterPluginBinding.binaryMessenger))
     }

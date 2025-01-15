@@ -26,6 +26,7 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     initDownloadPath();
+    _playAsset("static/5.mp4");
   }
 
   Future<void> initDownloadPath() async {
@@ -33,6 +34,7 @@ class _MyAppState extends State<MyApp> {
     String rootPath = appDocDir.path;
     downloadPathList = ["$rootPath/vap_demo1.mp4", "$rootPath/vap_demo2.mp4"];
     print("downloadPathList:$downloadPathList");
+
   }
 
   @override
@@ -73,7 +75,7 @@ class _MyAppState extends State<MyApp> {
                     CupertinoButton(
                       color: Colors.purple,
                       child: Text("asset play"),
-                      onPressed: () => _playAsset("static/demo.mp4"),
+                      onPressed: () => _playAsset("static/5.mp4"),
                     ),
                     CupertinoButton(
                       color: Colors.purple,
